@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSecondaryContainer"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".activities.SignUpActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/poppinssemi"
+                android:text="Welcome to Pragati"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="36sp"
+                android:minLines="2"
+                android:maxLines="2"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/linearLayout"-->
+        <!--            android:textSize="15sp"-->
+        <!--            android:text="Jaha Strugle Nahi Waha Pragati Nahi"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:fontFamily="@font/poppinssemi"/>-->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/card_background"
+        android:elevation="36dp">
+
+        <TextView
+            android:id="@+id/txtHeadingSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="48dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinssemi"
+            android:text="Sign Up"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:id="@+id/credentialsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppinssemi"
+                android:text="First Name"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="8dp"
+                android:drawableTint="?attr/colorOnBackground"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Enter your first name"
+                android:inputType="textPersonName"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinssemi"
+                android:text="Last Name"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtLastName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="8dp"
+                android:drawableTint="?attr/colorOnBackground"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Enter your last name"
+                android:inputType="textPersonName"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtEamil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinssemi"
+                android:text="Email"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtTxtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="8dp"
+                android:drawableTint="?attr/colorOnBackground"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Enter your email address"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinssemi"
+                android:text="Password"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtTxtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="8dp"
+                android:drawableTint="?attr/colorOnBackground"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Password must be 8 character"
+                android:inputType="textPassword"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="48dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppinssemi"
+                    android:text="Sign Up"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorSurface"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtAskingAc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Do have already an account?"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/poppinssemi"
+                android:text="Login"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

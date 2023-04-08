@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.MoreFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/personDetailsCard"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        app:cardElevation="10dp"
+        style="?attr/materialCardViewFilledStyle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtYourInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your info"
+                android:textColor="?attr/colorOnBackground"
+                android:fontFamily="@font/poppinssemi"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:textAlignment="center"/>
+
+
+            <TextView
+                android:id="@+id/txtInfoName"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtYourInfo"
+                android:text="Name :"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppinssemi"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/txtInputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtYourInfo"
+                android:layout_toEndOf="@id/txtInfoName"
+                android:text="Sonu Gada"
+                android:textColor="?attr/colorOnBackground"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:maxLines="1"/>
+
+            <TextView
+                android:id="@+id/txtInfoEmail"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtInfoName"
+                android:text="Email :"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppinssemi"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/txtInputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtInputName"
+                android:layout_toEndOf="@id/txtInfoEmail"
+                android:layout_alignParentBottom="true"
+                android:text="sonugada23@gmail.com"
+                android:textColor="?attr/colorOnBackground"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:maxLines="1"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/favoriteCard"
+        android:layout_width="match_parent"
+        android:layout_below="@id/personDetailsCard"
+        android:layout_height="70dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        app:cardElevation="4dp"
+        android:textAlignment="center"
+        style="?attr/materialCardViewFilledStyle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Favorite Websites"
+            android:textColor="?attr/colorOnBackground"
+            android:fontFamily="@font/poppinssemi"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:drawablePadding="10dp"
+            app:drawableStartCompat="@drawable/ic_favorite" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/faqCard"
+        android:layout_width="match_parent"
+        android:layout_below="@id/favoriteCard"
+        android:layout_height="70dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        app:cardElevation="4dp"
+        android:textAlignment="center"
+        style="?attr/materialCardViewFilledStyle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAQs"
+            android:fontFamily="@font/poppinssemi"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnBackground"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:drawablePadding="10dp"
+            app:drawableStartCompat="@drawable/ic_faqs" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/aboutUsCard"
+        android:layout_width="match_parent"
+        android:layout_below="@id/faqCard"
+        android:layout_height="70dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        app:cardElevation="4dp"
+        android:textAlignment="center"
+        style="?attr/materialCardViewFilledStyle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:fontFamily="@font/poppinssemi"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="?attr/colorOnBackground"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_aboutus"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/logOut"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="Logout"
+        android:textSize="20sp"
+        app:icon="@drawable/ic_logout" />
+
+</RelativeLayout>

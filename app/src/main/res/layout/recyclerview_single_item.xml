@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        style="?attr/materialCardViewFilledStyle">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/imgRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/freelancing"
+                android:padding="8dp"
+                android:background="@drawable/image_card_bg"
+                android:elevation="5dp"/>
+
+
+            <TextView
+                android:id="@+id/txtRecyclerViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinssemi"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="25sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@+id/imgRecyclerView"/>
+
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgRecyclerView"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/txtRecyclerViewTitle"
+                android:src="@drawable/ic_favorite_blank"
+                android:elevation="1dp"/>
+
+            <TextView
+                android:id="@+id/txtRecyclerViewDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cards should be easy to scan for relevant and actionable information. Elements like text and images should be placed on cards in a way that clearly indicates hierarchy."
+                android:fontFamily="@font/poppinsregular"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="3dp"
+                android:layout_below="@+id/txtRecyclerViewTitle"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

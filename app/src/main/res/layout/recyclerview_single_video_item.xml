@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        style="?attr/materialCardViewFilledStyle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:id="@+id/imgRecyclerView_video"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/freelancing"
+                android:padding="10dp"
+                android:elevation="5dp"/>
+
+            <TextView
+                android:id="@+id/txtVideoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppinssemi"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="25sp"
+                android:layout_marginStart="15dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
