@@ -7,10 +7,8 @@ Pragati is a comprehensive educational platform that brings together all the res
     They can also add their own resources, making it easy to personalize their learning experience
 - To-Do List
     The to-do list makes it easy for students to keep track of their assignments and tasks
-- Chat Feature
-     allows students to connect with their peers and educators. They can ask questions, share resources, and collaborate on projects, all within the platform
-- Bookmark System
-    bookmark system allows students to save their favourite resources for quick and easy access later.
+- Favorites
+     students can save their favourite resources for quick and easy access later.
 ---
 ## User Authentication API
 
