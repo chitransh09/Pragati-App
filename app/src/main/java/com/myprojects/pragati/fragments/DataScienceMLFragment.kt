@@ -3,7 +3,6 @@ package com.myprojects.pragati.fragments
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -11,14 +10,13 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.myprojects.pragati.R
 import com.myprojects.pragati.adapters.DataScienceAndMlAdapter
-import com.myprojects.pragati.adapters.DataStructureAdapter
-import com.myprojects.pragati.databinding.FragmentAboutUsBinding
 import com.myprojects.pragati.databinding.FragmentDataScienceMlBinding
 import com.myprojects.pragati.model.Websites
 
@@ -28,6 +26,7 @@ class DataScienceMLFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: DataScienceAndMlAdapter
     private lateinit var progressBar: ProgressBar
+    private lateinit var shimmerLayout: ShimmerFrameLayout
     private val dataLists = mutableListOf<Websites>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,10 +55,14 @@ class DataScienceMLFragment : Fragment() {
 
         binding.dataScienceRecyclerView.adapter = adapter  // Set RecyclerView adapter
 
-        binding.dataScienceRecyclerView.layoutManager = LinearLayoutManager(context)  // Set RecyclerView layout manager
+        binding.dataScienceRecyclerView.layoutManager =
+            LinearLayoutManager(context)  // Set RecyclerView layout manager
 
-        progressBar = binding.progressBar
-        progressBar.visibility = View.VISIBLE
+        shimmerLayout = binding.shimmerView
+        shimmerLayout.visibility = View.VISIBLE
+
+//        progressBar = binding.progressBar
+//        progressBar.visibility = View.VISIBLE
 
         fetchData()
 
@@ -72,7 +75,8 @@ class DataScienceMLFragment : Fragment() {
         val documentRef = db.collection("websites").document("datascienceandml").collection("items")
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
-                progressBar.visibility = View.GONE
+                shimmerLayout.visibility = View.GONE
+//                progressBar.visibility = View.GONE
                 for (document in documentSnapshot) {
                     val title = document.getString("title")
                     val description = document.getString("description")
@@ -99,7 +103,7 @@ class DataScienceMLFragment : Fragment() {
                 }
             }
             .addOnFailureListener { exception ->
-                progressBar.visibility = View.GONE
+                shimmerLayout.visibility = View.VISIBLE
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
             }

@@ -7,15 +7,12 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -29,6 +26,7 @@ class WebDevFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: WebDevAdapter
     private lateinit var progressBar: ProgressBar
+    private lateinit var shimmerLayout: ShimmerFrameLayout
     private val dataLists = mutableListOf<Websites>()
 
     override fun onCreateView(
@@ -53,10 +51,14 @@ class WebDevFragment : Fragment() {
 
         binding.webDevRecyclerView.adapter = adapter  // Set RecyclerView adapter
 
-        binding.webDevRecyclerView.layoutManager = LinearLayoutManager(context)  // Set RecyclerView layout manager
+        binding.webDevRecyclerView.layoutManager =
+            LinearLayoutManager(context)  // Set RecyclerView layout manager
 
-        progressBar = binding.progressBar
-        progressBar.visibility = View.VISIBLE
+        shimmerLayout = binding.shimmerView
+        shimmerLayout.visibility = View.VISIBLE
+
+//        progressBar = binding.progressBar
+//        progressBar.visibility = View.VISIBLE
 
         fetchData()
         return binding.root
@@ -69,7 +71,8 @@ class WebDevFragment : Fragment() {
         val documentRef = db.collection("websites").document("webDevelopment").collection("items")
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
-                progressBar.visibility = View.GONE
+                shimmerLayout.visibility = View.GONE
+//                progressBar.visibility = View.GONE
                 for (document in documentSnapshot) {
                     val title = document.getString("title")
                     val description = document.getString("description")
@@ -96,7 +99,7 @@ class WebDevFragment : Fragment() {
                 }
             }
             .addOnFailureListener { exception ->
-                progressBar.visibility = View.GONE
+                shimmerLayout.visibility = View.VISIBLE
                 Log.w(TAG, "Error getting documents.", exception)
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
             }

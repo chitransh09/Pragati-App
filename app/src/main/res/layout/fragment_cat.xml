@@ -22,16 +22,40 @@
             android:textAlignment="center"
             android:fontFamily="@font/poppinssemi"
             android:textSize="28sp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/catToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/catRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/catToolbar"
-        tools:listitem="@layout/recyclerview_single_item"/>
+        tools:listitem="@layout/recyclerview_single_item" />
 
     <ProgressBar
         android:id="@+id/progressBar"

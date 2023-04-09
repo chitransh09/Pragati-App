@@ -3,7 +3,6 @@ package com.myprojects.pragati.fragments
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -11,16 +10,14 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.myprojects.pragati.R
 import com.myprojects.pragati.adapters.AptitudeAdapter
-import com.myprojects.pragati.adapters.GateAdapter
 import com.myprojects.pragati.databinding.FragmentAptitudeBinding
-import com.myprojects.pragati.databinding.FragmentGateBinding
 import com.myprojects.pragati.model.Websites
 
 class AptitudeFragment : Fragment() {
@@ -57,11 +54,14 @@ class AptitudeFragment : Fragment() {
 
         binding.aptitudeRecyclerView.adapter = adapter  // Set RecyclerView adapter
 
-        binding.aptitudeRecyclerView.layoutManager = LinearLayoutManager(context)  // Set RecyclerView layout manager
+        binding.aptitudeRecyclerView.layoutManager =
+            LinearLayoutManager(context)  // Set RecyclerView layout manager
 
+        shimmerLayout = binding.shimmerView
+        shimmerLayout.visibility = View.VISIBLE
 
-        progressBar = binding.progressBar
-        progressBar.visibility = View.VISIBLE
+//        progressBar = binding.progressBar
+//        progressBar.visibility = View.VISIBLE
 
         fetchData()
 
@@ -74,7 +74,8 @@ class AptitudeFragment : Fragment() {
         val documentRef = db.collection("websites").document("aptitude").collection("items")
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
-                progressBar.visibility = View.GONE
+                shimmerLayout.visibility = View.GONE
+//                progressBar.visibility = View.GONE
                 for (document in documentSnapshot) {
                     val title = document.getString("title")
                     val description = document.getString("description")
@@ -101,7 +102,7 @@ class AptitudeFragment : Fragment() {
                 }
             }
             .addOnFailureListener { exception ->
-                progressBar.visibility = View.GONE
+                shimmerLayout.visibility = View.VISIBLE
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
             }

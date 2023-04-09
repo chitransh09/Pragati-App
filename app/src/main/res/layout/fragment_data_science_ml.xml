@@ -22,24 +22,48 @@
             android:textAlignment="center"
             android:fontFamily="@font/poppinssemi"
             android:textSize="28sp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dataScienceToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dataScienceRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/dataScienceToolbar"
-        tools:listitem="@layout/recyclerview_single_item"/>
+        tools:listitem="@layout/recyclerview_single_item" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:indeterminate="true"
-        android:indeterminateTintMode="src_atop"/>
+    <!--    <ProgressBar-->
+    <!--        android:id="@+id/progressBar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:visibility="invisible"-->
+    <!--        android:indeterminate="true"-->
+    <!--        android:indeterminateTintMode="src_atop"/>-->
 
 </RelativeLayout>

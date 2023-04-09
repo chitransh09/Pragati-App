@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,14 +22,39 @@
             android:textAlignment="center"
             android:fontFamily="@font/poppinssemi"
             android:textSize="28sp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jeeToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+            <include layout="@layout/recyclerview_shimmer_effect" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jeeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/recyclerview_single_item"/>
+        android:layout_below="@id/jeeToolbar"
+        tools:listitem="@layout/recyclerview_single_item" />
 
-</LinearLayout>
+</RelativeLayout>

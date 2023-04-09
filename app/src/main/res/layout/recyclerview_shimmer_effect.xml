@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
         style="?attr/materialCardViewFilledStyle">
 
 
@@ -25,7 +24,7 @@
             <ImageView
                 android:id="@+id/imgRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="140dp"
                 android:padding="8dp"
                 android:background="@drawable/recyclerview_img_bg_shimmer_effect"
                 android:elevation="5dp"/>
@@ -41,7 +40,7 @@
                 android:fontFamily="@font/poppinssemi"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textSize="25sp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
                 android:layout_below="@+id/imgRecyclerView"/>
 
@@ -51,16 +50,15 @@
                 android:layout_height="48dp"
                 android:layout_below="@id/imgRecyclerView"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/txtRecyclerViewTitle"
-                android:src="@drawable/ic_favorite_blank"
                 android:elevation="1dp"
                 android:background="#B3B3B3"/>
 
             <TextView
                 android:id="@+id/txtRecyclerViewDesc"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:fontFamily="@font/poppinsregular"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textSize="15sp"
