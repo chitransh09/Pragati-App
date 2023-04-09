@@ -38,6 +38,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
@@ -79,6 +81,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
@@ -119,6 +123,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
@@ -159,6 +165,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
@@ -215,6 +223,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
@@ -255,6 +265,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
@@ -293,6 +305,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 android:padding="8dp"
+                android:outlineAmbientShadowColor="@color/seed"
+                android:outlineSpotShadowColor="@color/seed"
                 style="?attr/materialCardViewFilledStyle">
 
                 <RelativeLayout
