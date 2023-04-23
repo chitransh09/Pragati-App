@@ -71,7 +71,7 @@ class CatFragment : Fragment() {
     private fun fetchData() {
 
         val db = Firebase.firestore
-        val documentRef = db.collection("websites").document("higherstudy").collection("CAT")
+        val documentRef = db.collection("websites").document("cat").collection("items")
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
                 shimmerLayout.visibility = View.GONE

@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -72,11 +74,15 @@ class AptitudeFragment : Fragment() {
 
         val db = Firebase.firestore
         val documentRef = db.collection("websites").document("aptitude").collection("items")
+        val query: Task<QuerySnapshot> = documentRef.get()
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
                 shimmerLayout.visibility = View.GONE
 //                progressBar.visibility = View.GONE
                 for (document in documentSnapshot) {
+                    val itemId = document.id
+//                    val itemData = document.data
+                    Log.d("Firestore", "Item ID: $itemId")
                     val title = document.getString("title")
                     val description = document.getString("description")
                     val link = document.getString("link")

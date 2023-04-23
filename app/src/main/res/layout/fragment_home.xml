@@ -6,28 +6,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment">
 
-    <TextView
-        android:id="@+id/txtHey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="?attr/colorOnSurface"
-        android:fontFamily="@font/poppinssemi"
-        android:padding="10dp"
-        android:text="Hey, there !"
-        android:textSize="25sp"/>
+    <LinearLayout
+        android:id="@+id/linearLayoutToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtHey"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:fontFamily="@font/poppinssemi"
+            android:textColor="#ffffff"
+            android:text="Hey, there !"
+            android:textSize="25sp" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/txtHey">
+        android:layout_below="@id/linearLayoutToolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutAnimation="@anim/layout_animation"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -66,54 +75,54 @@
                         android:fontFamily="@font/poppinssemi"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/imgAptitude"/>
+                        android:layout_toRightOf="@id/imgAptitude" />
 
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card1"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="15dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                android:padding="8dp"
-                android:outlineAmbientShadowColor="@color/seed"
-                android:outlineSpotShadowColor="@color/seed"
-                style="?attr/materialCardViewFilledStyle">
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card1"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="150dp"-->
+            <!--                android:layout_margin="15dp"-->
+            <!--                app:cardCornerRadius="10dp"-->
+            <!--                app:cardElevation="5dp"-->
+            <!--                android:padding="8dp"-->
+            <!--                android:outlineAmbientShadowColor="@color/seed"-->
+            <!--                android:outlineSpotShadowColor="@color/seed"-->
+            <!--                style="?attr/materialCardViewFilledStyle">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent">-->
 
-                    <ImageView
-                        android:id="@+id/imgSchool"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/school"
-                        android:padding="10dp"/>
+            <!--                    <ImageView-->
+            <!--                        android:id="@+id/imgSchool"-->
+            <!--                        android:layout_width="200dp"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:src="@drawable/school"-->
+            <!--                        android:padding="10dp"/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="School"
-                        android:textSize="22sp"
-                        android:padding="8dp"
-                        android:textAlignment="center"
-                        android:textColor="?attr/colorOnBackground"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/poppinssemi"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/imgSchool"/>
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="School"-->
+            <!--                        android:textSize="22sp"-->
+            <!--                        android:padding="8dp"-->
+            <!--                        android:textAlignment="center"-->
+            <!--                        android:textColor="?attr/colorOnBackground"-->
+            <!--                        android:layout_marginRight="5dp"-->
+            <!--                        android:layout_marginLeft="5dp"-->
+            <!--                        android:fontFamily="@font/poppinssemi"-->
+            <!--                        android:layout_alignParentEnd="true"-->
+            <!--                        android:layout_centerVertical="true"-->
+            <!--                        android:layout_toRightOf="@id/imgSchool"/>-->
 
-                </RelativeLayout>
+            <!--                </RelativeLayout>-->
 
-            </androidx.cardview.widget.CardView>
+            <!--            </androidx.cardview.widget.CardView>-->
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card2"

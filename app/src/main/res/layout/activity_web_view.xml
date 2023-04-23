@@ -23,12 +23,11 @@
             app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
-                android:id="@+id/schoolToolbarText"
+                android:id="@+id/webViewToolbarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Website name"
                 android:layout_marginTop="14dp"
-                android:textAlignment="center"
                 android:fontFamily="@font/poppinssemi"
                 android:textSize="28sp"
                 android:textColor="#ffffff"/>

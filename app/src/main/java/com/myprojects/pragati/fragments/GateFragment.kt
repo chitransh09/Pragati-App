@@ -71,7 +71,7 @@ class GateFragment : Fragment() {
     private fun fetchData() {
 
         val db = Firebase.firestore
-        val documentRef = db.collection("websites").document("higherstudy").collection("GATE")
+        val documentRef = db.collection("websites").document("gate").collection("items")
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
                 shimmerLayout.visibility = View.GONE

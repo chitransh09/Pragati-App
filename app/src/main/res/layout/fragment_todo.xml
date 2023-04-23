@@ -36,7 +36,7 @@
         android:layout_margin="25dp"
         android:src="@drawable/ic_add"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentEnd="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"

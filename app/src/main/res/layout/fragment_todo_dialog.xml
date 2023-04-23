@@ -4,6 +4,7 @@
     android:layout_width="400dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="1dp"
     tools:context=".fragments.TodoDialogFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/titleCard"
+            android:id="@+id/cardView1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -42,49 +43,13 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/todoTitleEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="?attr/colorPrimaryContainer"
-                    android:textColor="?attr/colorOnBackground"
-                    android:hint="Title"
-                    android:inputType="textEmailAddress"
-                    android:paddingStart="12dp"
-                    android:paddingTop="15dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView1"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleCard">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#ffffff"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/todoEt"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="?attr/colorPrimaryContainer"
                     android:textColor="?attr/colorOnBackground"
                     android:hint="Type your task...."
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:paddingStart="12dp"
                     android:paddingTop="15dp" />
             </com.google.android.material.textfield.TextInputLayout>

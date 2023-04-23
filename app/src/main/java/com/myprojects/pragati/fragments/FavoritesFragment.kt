@@ -1,25 +1,32 @@
 package com.myprojects.pragati.fragments
 
-import android.content.Context
+import SharedPrefManager
+import android.content.ContentValues
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myprojects.pragati.R
+import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.myprojects.pragati.adapters.FavoritesAdapter
 import com.myprojects.pragati.databinding.FragmentFavoritesBinding
-import com.myprojects.pragati.model.Websites
+import com.myprojects.pragati.model.FavouritesWebsites
 
 class FavoritesFragment : Fragment() {
 
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: FavoritesAdapter
-    private val dataLists = mutableListOf<Websites>()
+    private lateinit var shimmerLayout: ShimmerFrameLayout
+    private val dataLists = mutableListOf<FavouritesWebsites>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,40 +59,66 @@ class FavoritesFragment : Fragment() {
         binding.favoriteRecyclerView.layoutManager =
             LinearLayoutManager(context)  // Set RecyclerView layout manager
 
+        shimmerLayout = binding.shimmerView
+        shimmerLayout.visibility = View.VISIBLE
+
         fetchData()
 
         return binding.root
     }
 
     private fun fetchData() {
-        val sharedPrefs = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
-        for (item in getFavoriteWebsites()) {
-            val isFavorite = sharedPrefs?.getBoolean("favorite_${item.id}", false) ?: false
-            if (isFavorite) {
-                dataLists.add(item)
+        val email = SharedPrefManager(requireContext()).getEmail()
+        val db = Firebase.firestore
+        val documentRef = db.collection("favourites").document("userEmails").collection(email!!)
+        documentRef.get()
+            .addOnSuccessListener { documentSnapshot ->
+                shimmerLayout.visibility = View.GONE
+//                progressBar.visibility = View.GONE
+                for (document in documentSnapshot) {
+                    val title = document.getString("title")
+                    val description = document.getString("description")
+                    val link = document.getString("link")
+                    val category = document.getString("filter")
+                    val imageRef = document.getString("image")
+
+                    if (title != null && description != null && imageRef != null) {
+
+                        // Retrieve the image using Firebase Storage API
+
+                        val storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageRef)
+                        storageRef.downloadUrl.addOnSuccessListener { uri ->
+
+                            // Add the retrieved data to the list
+                            dataLists.add(
+                                FavouritesWebsites(
+                                    id,
+                                    title,
+                                    description,
+                                    uri.toString(),
+                                    link,
+                                    category
+                                )
+                            )
+
+                            // Notify adapter of data change
+                            adapter.notifyDataSetChanged()
+                        }.addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting image URL.", exception)
+                            Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
+                }
             }
-        }
-
-        adapter.notifyDataSetChanged()
+            .addOnFailureListener { exception ->
+                shimmerLayout.visibility = View.VISIBLE
+                Log.w(ContentValues.TAG, "Error getting documents.", exception)
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_LONG).show()
+            }
     }
 
-    private fun getFavoriteWebsites(): List<Websites> {
-        val sharedPreferences =
-            requireActivity().getSharedPreferences("favorites", Context.MODE_PRIVATE)
-        val favoriteIds = sharedPreferences.getStringSet("favoriteIds", setOf()) ?: setOf()
-        val favoriteWebsites = mutableListOf<Websites>()
-        for (id in favoriteIds) {
-            val title = sharedPreferences.getString("favorite_${id}_title", null)
-            val description = sharedPreferences.getString("favorite_${id}_description", null)
-            val link = sharedPreferences.getString("favorite_${id}_link", null)
-            val imageUrl = sharedPreferences.getString("favorite_${id}_imageUrl", null)
-            if (title != null && description != null && link != null && imageUrl != null) {
-                favoriteWebsites.add(Websites(id.toInt(), title, description, link, imageUrl))
-            }
-        }
-        return favoriteWebsites
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

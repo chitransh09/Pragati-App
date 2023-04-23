@@ -1,24 +1,37 @@
 package com.myprojects.pragati.adapters
 
-import android.content.Context
+import SharedPrefManager
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.myprojects.pragati.R
 import com.myprojects.pragati.activities.WebViewActivity
-import com.myprojects.pragati.model.Websites
+import com.myprojects.pragati.databinding.RecyclerviewFavouritesSingleItemBinding
+import com.myprojects.pragati.model.FavouritesWebsites
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
-class FavoritesAdapter(private val items: List<Websites>) : RecyclerView.Adapter<FavoritesAdapter.FavoriteViewHolder>() {
+class FavoritesAdapter(private val items: MutableList<FavouritesWebsites>) :
+    RecyclerView.Adapter<FavoritesAdapter.FavoriteViewHolder>() {
+
+    class FavoriteViewHolder(val binding: RecyclerviewFavouritesSingleItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_single_item, parent, false)
-        return FavoriteViewHolder(view)
+        val binding_ = RecyclerviewFavouritesSingleItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return FavoriteViewHolder(binding_)
     }
 
     override fun getItemCount(): Int {
@@ -27,34 +40,74 @@ class FavoritesAdapter(private val items: List<Websites>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         val item = items[position]
-        holder.titleTextView.text = item.title
-        holder.descriptionTextView.text = item.description
+        holder.binding.txtRecyclerViewTitle.text = item.title
+        holder.binding.txtRecyclerViewDesc.text = item.description
+        holder.binding.txtFavouriteCategory.text = item.filter
         Glide.with(holder.itemView.context)
             .load(item.image)
             .placeholder(R.drawable.freelancing) // replace with your placeholder image
-            .into(holder.imageView)
+            .into(holder.binding.imgRecyclerView)
 
         // Add an OnClickListener to the favorite button
-        holder.favoriteButton.setOnClickListener {
-            val sharedPrefs = holder.itemView.context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-            val editor = sharedPrefs.edit()
-            editor.remove("favorite_${item.id}")
-            editor.remove("favorite_${item.id}").apply()
-            notifyDataSetChanged()
+        holder.binding.btnDelete.setOnClickListener {
+            GlobalScope.launch {
+                try {
+                    val email = SharedPrefManager(holder.itemView.context).getEmail()
+                    val favoritesRef =
+                        Firebase.firestore.collection("favourites").document("userEmails")
+                            .collection(email!!)
+                    val querySnapshot = favoritesRef
+                        .whereEqualTo("title", item.title)
+                        .whereEqualTo("link", item.link)
+                        .get()
+                        .await()
+                    val isAlreadyFavorite = !querySnapshot.isEmpty
+
+                    if (!isAlreadyFavorite) {
+                        // add the item to the list of favorites
+                        val docRef = favoritesRef
+                            .add(
+                                mapOf(
+                                    "title" to item.title,
+                                    "link" to item.link,
+                                    "image" to item.image,
+                                    "description" to item.description,
+                                    "filter" to item.filter // add the new field "filter" here
+                                )
+                            )
+                            .await()
+                        Log.d("Firestore", "Document written with ID: ${docRef.id}")
+
+                        // update the UI to show the item as favorite
+                        withContext(Dispatchers.Main) {
+                            holder.binding.btnDelete.setImageResource(R.drawable.ic_delete)
+                        }
+                    } else {
+                        // remove the item from the list of favorites
+                        val docSnapshot = querySnapshot.documents.first()
+                        docSnapshot.reference.delete().await()
+                        Log.d("Firestore", "Document deleted with ID: ${docSnapshot.id}")
+
+                        // remove the item from the RecyclerView and update the UI
+                        withContext(Dispatchers.Main) {
+                            items.removeAt(position)
+                            notifyItemRemoved(position)
+                        }
+                    }
+                } catch (e: Exception) {
+                    Log.e("Firestore", "Error adding to favorites", e)
+                }
+            }
         }
+
 
         // Set an OnClickListener on the itemView to open the link
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, WebViewActivity::class.java)
             intent.putExtra("url", item.link)
+            intent.putExtra("title", item.title)
             holder.itemView.context.startActivity(intent)
         }
     }
 
-    class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val titleTextView: TextView = itemView.findViewById(R.id.txtRecyclerViewTitle)
-        val descriptionTextView: TextView = itemView.findViewById(R.id.txtRecyclerViewDesc)
-        val imageView: ImageView = itemView.findViewById(R.id.imgRecyclerView)
-        val favoriteButton: ImageButton = itemView.findViewById(R.id.btnFavorite)
-    }
 }

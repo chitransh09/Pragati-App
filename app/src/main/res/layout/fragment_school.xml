@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SchoolFragment"
     android:orientation="vertical"
-    android:background="?attr/colorOnSecondary">
+    android:background="?attr/colorOnSecondary"
+    android:layoutAnimation="@anim/layout_animation">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/schoolToolbar"

@@ -42,6 +42,9 @@ class WebViewActivity : AppCompatActivity() {
 //        webView.settings.javaScriptEnabled = true
 //        webView.loadUrl("https://www.w3schools.com/")
 
+        val title = intent.getStringExtra("title") // Retrieve the title from the intent extras
+        binding.webViewToolbarText.text =
+            title  // Set the title of the Toolbar to the retrieved title
 
         val url = intent.getStringExtra("url")
         binding.webView.loadUrl(url.toString())
@@ -51,8 +54,9 @@ class WebViewActivity : AppCompatActivity() {
         binding.webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                progressBar.visibility = View.GONE // hide progress bar when page is finished loading
-//                binding.schoolToolbarText.text = view?.title // set the title of the Toolbar to the title of the webpage
+                progressBar.visibility =
+                    View.GONE // hide progress bar when page is finished loading
+//                binding.webViewText.text = view?.title // set the title of the Toolbar to the title of the webpage
             }
 
             override fun onReceivedError(

@@ -41,13 +41,13 @@ class HomeFragment : Fragment() {
         // Display the first name in the UI
         binding.txtHey.text = "Hey, $firstName !"
 
-        binding.card1.setOnClickListener {
-            val schoolFragment = SchoolFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.frame, schoolFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        }
+//        binding.card1.setOnClickListener {
+//            val schoolFragment = SchoolFragment()
+//            fragmentManager?.beginTransaction()
+//                ?.replace(R.id.frame, schoolFragment)
+//                ?.addToBackStack(null)
+//                ?.commit()
+//        }
 
         binding.card2.setOnClickListener {
             val dataStructureFragment = DataStructureFragment()
