@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        style="?attr/materialCardViewFilledStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:outlineAmbientShadowColor="@color/seed"
+        android:outlineSpotShadowColor="@color/seed"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/imgSection"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/image_card_bg">
+
+                <ImageView
+                    android:id="@+id/imgRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="5dp"
+                    android:src="@drawable/freelancing" />
+
+                <TextView
+                    android:id="@+id/txtFavouriteCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/category_filter_background"
+                    android:elevation="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="5dp"
+                    android:text="WebDevelopment"
+                    android:textColor="#ffffff"
+                    android:textSize="13sp" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/txtRecyclerViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgSection"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppinssemi"
+                android:minWidth="100dp"
+                android:padding="5dp"
+                android:text="Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgSection"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/txtRecyclerViewTitle"
+                android:elevation="1dp"
+                android:src="@drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/txtRecyclerViewDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtRecyclerViewTitle"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Cards should be easy to scan for relevant and actionable information. Elements like text and images should be placed on cards in a way that clearly indicates hierarchy."
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
