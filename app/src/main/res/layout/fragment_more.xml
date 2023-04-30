@@ -65,10 +65,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtInfoName"
                 android:text="Email :"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
                 android:textColor="?attr/colorOnBackground"
                 android:textSize="20sp"
                 android:fontFamily="@font/poppinssemi"
-                android:padding="10dp"/>
+                android:padding="10dp" />
 
             <TextView
                 android:id="@+id/txtInputEmail"
@@ -89,9 +91,39 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/favoriteCard"
+        android:id="@+id/customLinkCard"
         android:layout_width="match_parent"
         android:layout_below="@id/personDetailsCard"
+        android:layout_height="70dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        app:cardElevation="4dp"
+        android:textAlignment="center"
+        style="?attr/materialCardViewFilledStyle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom Links"
+            android:textColor="?attr/colorOnBackground"
+            android:fontFamily="@font/poppinssemi"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:drawablePadding="10dp"
+            app:drawableStartCompat="@drawable/ic_customlinks" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/favoriteCard"
+        android:layout_width="match_parent"
+        android:layout_below="@id/customLinkCard"
         android:layout_height="70dp"
         app:cardCornerRadius="20dp"
         android:layout_marginLeft="10dp"
@@ -118,40 +150,40 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/faqCard"
-        android:layout_width="match_parent"
-        android:layout_below="@id/favoriteCard"
-        android:layout_height="70dp"
-        app:cardCornerRadius="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
-        app:cardElevation="4dp"
-        android:textAlignment="center"
-        style="?attr/materialCardViewFilledStyle">
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:id="@+id/faqCard"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_below="@id/favoriteCard"-->
+    <!--        android:layout_height="70dp"-->
+    <!--        app:cardCornerRadius="20dp"-->
+    <!--        android:layout_marginLeft="10dp"-->
+    <!--        android:layout_marginRight="10dp"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        app:cardElevation="4dp"-->
+    <!--        android:textAlignment="center"-->
+    <!--        style="?attr/materialCardViewFilledStyle">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FAQs"
-            android:fontFamily="@font/poppinssemi"
-            android:textAlignment="center"
-            android:padding="10dp"
-            android:textSize="20sp"
-            android:textColor="?attr/colorOnBackground"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="10dp"
-            android:drawablePadding="10dp"
-            app:drawableStartCompat="@drawable/ic_faqs" />
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="FAQs"-->
+    <!--            android:fontFamily="@font/poppinssemi"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:padding="10dp"-->
+    <!--            android:textSize="20sp"-->
+    <!--            android:textColor="?attr/colorOnBackground"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginBottom="10dp"-->
+    <!--            android:layout_marginStart="10dp"-->
+    <!--            android:drawablePadding="10dp"-->
+    <!--            app:drawableStartCompat="@drawable/ic_faqs" />-->
 
-    </androidx.cardview.widget.CardView>
+    <!--    </androidx.cardview.widget.CardView>-->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/aboutUsCard"
         android:layout_width="match_parent"
-        android:layout_below="@id/faqCard"
+        android:layout_below="@id/favoriteCard"
         android:layout_height="70dp"
         app:cardCornerRadius="20dp"
         android:layout_marginLeft="10dp"
